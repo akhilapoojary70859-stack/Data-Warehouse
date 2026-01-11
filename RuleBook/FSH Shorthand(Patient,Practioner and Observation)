@@ -1,0 +1,49 @@
+PATIENT PROFILE
+Profile: GeneralPatient
+Parent: Patient
+Id: general-patient
+Title: "General Patient Profile"
+Description: "General patient profile defined using FHIR Shorthand."
+
+* identifier 1..* MS
+* identifier.system 1..1
+* identifier.value 1..1
+
+* name 1..1 MS
+* name.family 1..1
+* name.given 1..*
+
+* gender 1..1 MS
+* birthDate 1..1 MS
+
+PRACTIONER PROFILE
+Profile: GeneralPractitioner
+Parent: Practitioner
+Id: general-practitioner
+Title: "General Practitioner Profile"
+Description: "General practitioner profile defined using FHIR Shorthand."
+
+* identifier 1..* MS
+* identifier.system 1..1
+* identifier.value 1..1
+
+* name 1..1 MS
+* name.family 1..1
+* name.given 1..*
+
+* qualification 1..* MS
+
+OBSERVATION PROFILE
+Profile: GeneralObservation
+Parent: Observation
+Id: general-observation
+Title: "General Observation Profile"
+Description: "General observation profile defined using FHIR Shorthand."
+
+* status 1..1 MS
+* code 1..1 MS
+* subject 1..1 MS
+* subject only Reference(Patient)
+
+* effective[x] 1..1 MS
+* value[x] 1..1 MS

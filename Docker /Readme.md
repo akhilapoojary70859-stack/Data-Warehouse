@@ -1,0 +1,3 @@
+# FHIR-Infrastructure-
+Docker-based deployment of HAPI FHIR server with host–container port mapping.
+Using Docker eliminated dependency-related issues by packaging the HAPI FHIR server with all required libraries and runtime components into a single container. This prevented "dependency hell" caused by differences in operating systems, Java versions, or local configurations across student laptops. By running the same Docker image on different machines, a consistent and reliable environment was ensured on all systems.

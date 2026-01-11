@@ -1,0 +1,4 @@
+1.	The HAPI FHIR server runs on port 8080 inside the Docker container.
+2.	Docker port mapping (-p 8080:8080) maps the container’s port 8080 to the host machine’s port 8080.
+3.	Requests sent to localhost:8080 on the host are forwarded to the container.
+4.	This bridge allows the host to access the FHIR server at http://localhost:8080/fhir/

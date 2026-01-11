@@ -1,0 +1,34 @@
+import csv, json
+
+# Files
+input_csv = "data/sample_rmhc.csv"
+output_json = "data/migrated_patients.json"
+
+# Gender mapping
+gender_map = {"M": "male", "F": "female"}
+
+# Read CSV and create JSON
+patients = []
+with open(input_csv, newline='') as f:
+    for row in csv.DictReader(f):
+        patients.append({
+            "resourceType": "Patient",
+            "id": row["PatientID"],
+            "name": [{"family": row["LastName"], "given": [row["FirstName"]]}],
+            "gender": gender_map.get(row["Gender"].upper(), "unknown"),
+            "birthDate": row["BirthDate"],
+            "observations": [{
+                "resourceType": "Observation",
+                "status": "final",
+                "code": {"text": row["Observation"]},
+                "value": row["Value"],
+                "unit": row["Unit"],
+                "effectiveDateTime": row["VisitDate"]
+            }]
+        })
+
+# Save JSON
+with open(output_json, "w") as f:
+    json.dump(patients, f, indent=2)
+
+print(f"Migration done! Output saved to {output_json}")

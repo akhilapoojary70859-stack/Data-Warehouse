@@ -1,0 +1,6 @@
+Docker ensured a consistent environment across machines.  
+- FSH + SUSHI standardized FHIR profiles for Patient, Observation, and Practitioner.  
+- Python Translator efficiently converted legacy CSV into FHIR resources.  
+- Magic strings (like Gender) were normalized using ConceptMap and $translate.  
+- Transaction Bundles ensured atomic creation of resources in the FHIR server.  
+- Overall, the project demonstrated end-to-end healthcare data migration and interoperability

@@ -1,0 +1,18 @@
+The RMHC to FHIR migration system consists of four main components:
+
+1. **Dockerized HAPI FHIR Server**  
+   - Hosts the FHIR resources (Patient, Observation, Practitioner).  
+   - Provides REST API endpoints to create, read, and update FHIR resources.  
+
+2. **Translator (Python Script)**  
+   - Reads the RMHC CSV data.  
+   - Maps CSV columns to FHIR resource fields using Source-to-Target Mapping.  
+   - Assigns UUIDs and generates FHIR-compliant JSON.
+
+3. **Rulebook (FSH + SUSHI)**  
+   - Defines FHIR profiles and StructureDefinitions for Patient, Practitioner, Observation.  
+   - Ensures standardized resources across all implementations.
+
+4. **Transaction Bundles**  
+   - Groups multiple resources for atomic creation in the FHIR server.  
+   - Ensures that either all resources are created or none, preserving data integrity.

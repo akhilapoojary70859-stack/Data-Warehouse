@@ -1,0 +1,12 @@
+| Source (CSV) Column | Target FHIR Resource | Target FHIR Field | Transformation / Notes                                                 |
+| ------------------- | -------------------- | ----------------- | ---------------------------------------------------------------------- |
+| PatientID           | Patient              | id                | Assigned as UUID for uniqueness.                                       |
+| FirstName           | Patient              | name.given[0]     | Direct mapping from CSV.                                               |
+| LastName            | Patient              | name.family       | Direct mapping from CSV.                                               |
+| Gender              | Patient              | gender            | Mapped using ConceptMap & `$translate` (`M` → `male`, `F` → `female`). |
+| BirthDate           | Patient              | birthDate         | Direct mapping; ensure ISO date format (`YYYY-MM-DD`).                 |
+| VisitDate           | Observation          | effectiveDateTime | Used as observation date; ISO datetime format.                         |
+| Observation         | Observation          | code.text         | Observation name mapped as FHIR code text.                             |
+| Value               | Observation          | value             | Direct mapping from CSV.                                               |
+| Unit                | Observation          | unit              | Direct mapping from CSV.                                               |
+

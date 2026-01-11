@@ -1,0 +1,21 @@
+1. Legacy data extracted as CSV  
+2. Translator (Python script) reads each row  
+3. Fields mapped to FHIR resources (Patient, Observation)  
+4. Magic strings normalized using ConceptMap and $translate  
+5. Resources grouped into Transaction Bundles  
+6. Bundles submitted to Dockerized HAPI FHIR server  
+7. Server validates and stores the data
+
+RMHC CSV
+   |
+   v
+Translator.py
+   |
+   v
+FHIR JSON Resources
+   |
+   v
+Transaction Bundle
+   |
+   v
+Dockerized HAPI FHIR Server
